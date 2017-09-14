@@ -29,15 +29,21 @@ class WarmSpiral(Spiral):
         turtle.pencolor(turtle.colors[self.x % 3])
 
 if __name__ == "__main__":
-    print("rainbow, cool, warm, or none?")
-    comm = raw_input()
-    if comm == "rainbow":
-        rainbow = RainbowSpiral()
-    elif comm == "cool":
-        cool = CoolSpiral()
-    elif comm == "warm":
-        warm = WarmSpiral()
-    elif comm == "none":
-        spiral = Spiral()
-    else:
-        print("sorry, I don't know what that means")
+    go = "go"
+    while go == "go":
+        print("rainbow, cool, warm, or none?")
+        comm = raw_input()
+        if comm == "rainbow":
+            rainbow = RainbowSpiral()
+            break
+        elif comm == "cool":
+            cool = CoolSpiral()
+            break
+        elif comm == "warm":
+            warm = WarmSpiral()
+            break
+        elif comm == "none":
+            spiral = Spiral()
+            break
+        else:
+            print("sorry, I don't know what that means")
