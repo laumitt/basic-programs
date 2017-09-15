@@ -29,8 +29,8 @@ class WarmSpiral(Spiral):
         turtle.pencolor(turtle.colors[self.x % 3])
 
 if __name__ == "__main__":
-    go = "go"
-    while go == "go":
+    go = True
+    while go == True:
         print("rainbow, cool, warm, or none?")
         comm = raw_input()
         if comm == "rainbow":
