@@ -6,41 +6,38 @@ class Bird:
         self.canvas = canvas
         self.x = random.uniform(0, self.canvas.winfo_width())
         self.y = random.uniform(0, self.canvas.winfo_height())
-        self.min_x_speed = int
-        self.max_x_speed = int
-        self.x_speed = random.uniform(self.min_x_speed, self.max_x_speed)
-        self.min_y_speed = int
-        self.max_y_speed = int
-        self.y_speed = random.uniform(self.min_y_speed, self.max_y_speed)
-        self.size = int
         self.fill_color = '#{0:0>6x}'.format(random.randint(00, 16 ** 6))
     def display(self):
         self.canvas.create_oval(self.x, self.y, self.x + self.size * 2,
                                 self.y + self.size, fill = self.fill_color)
-    def move(self):
-        self.x += self.x_speed
-        self.y += self.y_speed
-        if (self.x > self.canvas.winfo_width()): # if off to right of screen
-            self.x = -self.size                  # move to just off left of screen
 
 class SoaringBird(Bird):
     def __init__(self, canvas):
         Bird.__init__(self, canvas)
         self.min_x_speed = 1.0
         self.max_x_speed = 3.0
+        self.x_speed = random.uniform(self.min_x_speed, self.max_x_speed)
         self.size = 30.0
-        print("Soaring self.x = " + str(self.x) + " self.y = " + str(self.y))
+    def move(self):
+        self.x += self.x_speed
+        if (self.x > self.canvas.winfo_width()): # if off to right of screen
+            self.x = -self.size                  # move to just off left of screen
 
 class FlittingBird(Bird):
     def __init__(self, canvas):
         Bird.__init__(self, canvas)
         self.min_x_speed = 2.0
         self.max_x_speed = 5.0
+        self.x_speed = random.uniform(self.min_x_speed, self.max_x_speed)
         self.min_y_speed = -1.0
         self.max_y_speed = 1.0
+        self.y_speed = random.uniform(self.min_y_speed, self.max_y_speed)
         self.size = 15.0
-        print("Flitting self.x = " + str(self.x) + " self.y = " + str(self.y))
     def move(self):
+        self.x += self.x_speed
+        self.y += self.y_speed
+        if (self.x > self.canvas.winfo_width()): # if off to right of screen
+            self.x = -self.size
         if (self.y < - self.size or self.y > self.canvas.winfo_height()):
             self.y_speed = -self.y_speed
         if (random.random() > 0.8):
