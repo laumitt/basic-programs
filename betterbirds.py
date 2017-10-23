@@ -6,13 +6,13 @@ class Bird:
         self.canvas = canvas
         self.x = random.uniform(0, self.canvas.winfo_width())
         self.y = random.uniform(0, self.canvas.winfo_height())
-        self.min_x_speed = 0
-        self.max_x_speed = 0
+        self.min_x_speed = int
+        self.max_x_speed = int
         self.x_speed = random.uniform(self.min_x_speed, self.max_x_speed)
-        self.min_y_speed = 0
-        self.max_y_speed = 0
+        self.min_y_speed = int
+        self.max_y_speed = int
         self.y_speed = random.uniform(self.min_y_speed, self.max_y_speed)
-        self.size = 0
+        self.size = int
         self.fill_color = '#{0:0>6x}'.format(random.randint(00, 16 ** 6))
     def display(self):
         self.canvas.create_oval(self.x, self.y, self.x + self.size * 2,
@@ -110,5 +110,3 @@ if __name__ == '__main__':
     draw()
     canvas.after(delay, draw)
     root.mainloop() # keep the window open
-
-    # it's not updating the birds moving
